@@ -1,0 +1,27 @@
+<div class="container ">
+  <div class="row">
+  <div class="col-md-12 text-white text-center" style="background:black">
+    LOCAL WEATHER
+  </div>
+  <div class="col-md-12 text-center card" *ngIf="weatherSelected">
+         <img class="pull-left" src="assets/svg/{{weatherSelected.weather[0].main}}.svg">
+         <h2 class="temp"> {{weatherSelected.main.temp_max}}° / {{weatherSelected.main.temp_min}}°</h2>
+ 
+        {{weatherSelected.dt_txt | date:'medium'}}
+
+       
+  </div>
+
+
+  <div (click)="updateWeather(w)" class="col-md-4 text-center card hoverDiv" *ngFor="let w of weather.list | slice:1:4; let i=index">  
+    
+    <img src="assets/svg/{{w.weather[0].main}}.svg">
+  
+        <span> {{w.main.temp_max}}° / {{w.main.temp_min}}°</span>
+ 
+        {{w.dt_txt | date:'medium'}}
+
+  </div>
+  </div>
+    
+</div>
